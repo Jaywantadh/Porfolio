@@ -317,6 +317,8 @@ body {
 *::before,
 *::after {
   box-sizing: inherit;
+  margin: 0;
+  padding: 0;
 }
 
 /* Typography */
@@ -326,7 +328,7 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0;
+  margin: 0 0 var(--space-16) 0;
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-tight);
   color: var(--color-text);
@@ -354,6 +356,16 @@ h6 {
 
 p {
   margin: 0 0 var(--space-16) 0;
+}
+
+/* Reset margins for specific elements */
+ul, ol {
+  margin: 0 0 var(--space-16) var(--space-20);
+  padding: 0;
+}
+
+li {
+  margin: 0 0 var(--space-8) 0;
 }
 
 a {
@@ -530,7 +542,12 @@ select.form-control {
 }
 
 .form-group {
-  margin-bottom: var(--space-16);
+  margin: 0 0 var(--space-16) 0;
+  padding: 0;
+}
+
+.form-group:last-child {
+  margin-bottom: var(--space-20);
 }
 
 /* Card component */
@@ -610,10 +627,9 @@ select.form-control {
 /* Container layout */
 .container {
   width: 100%;
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: var(--space-16);
-  padding-left: var(--space-16);
+  margin: 0 auto;
+  padding: 0 var(--space-16);
+  box-sizing: border-box;
 }
 
 @media (min-width: 640px) {
@@ -663,49 +679,61 @@ select.form-control {
   gap: var(--space-16);
 }
 
+/* Margin utilities */
 .m-0 {
-  margin: 0;
+  margin: 0 !important;
 }
 .mt-8 {
-  margin-top: var(--space-8);
+  margin-top: var(--space-8) !important;
 }
 .mb-8 {
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-8) !important;
 }
 .mx-8 {
-  margin-left: var(--space-8);
-  margin-right: var(--space-8);
+  margin-left: var(--space-8) !important;
+  margin-right: var(--space-8) !important;
 }
 .my-8 {
-  margin-top: var(--space-8);
-  margin-bottom: var(--space-8);
+  margin-top: var(--space-8) !important;
+  margin-bottom: var(--space-8) !important;
+}
+.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
+/* Padding utilities */
 .p-0 {
-  padding: 0;
+  padding: 0 !important;
 }
 .py-8 {
-  padding-top: var(--space-8);
-  padding-bottom: var(--space-8);
+  padding-top: var(--space-8) !important;
+  padding-bottom: var(--space-8) !important;
 }
 .px-8 {
-  padding-left: var(--space-8);
-  padding-right: var(--space-8);
+  padding-left: var(--space-8) !important;
+  padding-right: var(--space-8) !important;
 }
 .py-16 {
-  padding-top: var(--space-16);
-  padding-bottom: var(--space-16);
+  padding-top: var(--space-16) !important;
+  padding-bottom: var(--space-16) !important;
 }
 .px-16 {
-  padding-left: var(--space-16);
-  padding-right: var(--space-16);
+  padding-left: var(--space-16) !important;
+  padding-right: var(--space-16) !important;
 }
 
+/* Display utilities */
 .block {
   display: block;
 }
 .hidden {
   display: none;
+}
+
+/* Box-sizing utility */
+.box-border {
+  box-sizing: border-box !important;
 }
 
 /* Accessibility */
@@ -788,6 +816,24 @@ body {
   cursor: none;
 }
 
+/* Ensure all elements have proper box-sizing and margin handling */
+* {
+  box-sizing: border-box;
+}
+
+*:not(html):not(body) {
+  margin: 0;
+}
+
+/* Override for elements that need specific margins */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 var(--space-16) 0;
+}
+
+p {
+  margin: 0 0 var(--space-16) 0;
+}
+
 /* Custom cursor */
 .cursor-follower {
   position: fixed;
@@ -838,6 +884,10 @@ body {
   margin: 0;
   padding: 0;
   gap: var(--space-32);
+}
+
+.nav-menu li {
+  margin: 0;
 }
 
 .nav-link {
@@ -936,6 +986,8 @@ body {
   text-align: center;
   max-width: 800px;
   padding: 0 var(--space-24);
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .hero-title {
@@ -1072,16 +1124,19 @@ body {
 section {
   padding: 100px 0;
   position: relative;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .section-header {
   text-align: center;
-  margin-bottom: var(--space-48);
+  margin: 0 0 var(--space-48) 0;
+  padding: 0;
 }
 
 .section-title {
   font-size: var(--font-size-4xl);
-  margin-bottom: var(--space-16);
+  margin: 0 0 var(--space-16) 0;
   background: linear-gradient(45deg, var(--color-text), var(--color-luxury-red));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1091,6 +1146,7 @@ section {
 .section-subtitle {
   font-size: var(--font-size-lg);
   color: var(--color-text-secondary);
+  margin: 0;
 }
 
 /* About Section */
@@ -1109,16 +1165,18 @@ section {
 }
 
 .about-highlights {
-  margin-top: var(--space-32);
+  margin: var(--space-32) 0 0 0;
+  padding: 0;
 }
 
 .highlight-item {
-  margin-bottom: var(--space-24);
+  margin: 0 0 var(--space-24) 0;
+  padding: 0;
 }
 
 .highlight-item h4 {
   color: var(--color-luxury-red);
-  margin-bottom: var(--space-8);
+  margin: 0 0 var(--space-8) 0;
 }
 
 .highlight-item p {
@@ -1161,17 +1219,18 @@ section {
 
 .category-title {
   color: var(--color-luxury-red);
-  margin-bottom: var(--space-24);
+  margin: 0 0 var(--space-24) 0;
   font-size: var(--font-size-xl);
 }
 
 .skill-item {
-  margin-bottom: var(--space-20);
+  margin: 0 0 var(--space-20) 0;
+  padding: 0;
 }
 
 .skill-name {
   display: block;
-  margin-bottom: var(--space-8);
+  margin: 0 0 var(--space-8) 0;
   font-weight: var(--font-weight-medium);
 }
 
@@ -1209,7 +1268,7 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: var(--space-16);
+  margin: 0 0 var(--space-16) 0;
 }
 
 .project-title {
@@ -1230,14 +1289,14 @@ section {
 .project-description {
   color: var(--color-text-secondary);
   line-height: 1.6;
-  margin-bottom: var(--space-20);
+  margin: 0 0 var(--space-20) 0;
 }
 
 .project-tech-stack {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-8);
-  margin-bottom: var(--space-20);
+  margin: 0 0 var(--space-20) 0;
 }
 
 .tech-tag {
@@ -1277,28 +1336,30 @@ section {
 
 .contact-info h3 {
   color: var(--color-text);
-  margin-bottom: var(--space-16);
+  margin: 0 0 var(--space-16) 0;
 }
 
 .contact-info p {
   color: var(--color-text-secondary);
-  margin-bottom: var(--space-24);
+  margin: 0 0 var(--space-24) 0;
 }
 
 .contact-methods {
-  margin-bottom: var(--space-32);
+  margin: 0 0 var(--space-32) 0;
+  padding: 0;
 }
 
 .contact-method {
   display: flex;
   flex-direction: column;
-  margin-bottom: var(--space-16);
+  margin: 0 0 var(--space-16) 0;
+  padding: 0;
 }
 
 .method-label {
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
-  margin-bottom: var(--space-4);
+  margin: 0 0 var(--space-4) 0;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -1388,16 +1449,20 @@ section {
   
   .hero-title {
     font-size: clamp(2rem, 10vw, 4rem);
+    margin: 0 0 var(--space-20) 0;
   }
   
   .hero-buttons {
     flex-direction: column;
     align-items: center;
+    gap: var(--space-16);
+    margin: 0 0 var(--space-32) 0;
   }
   
   .hero-stats {
     flex-direction: column;
     gap: var(--space-24);
+    margin: 0;
   }
   
   .about-content {
@@ -1407,10 +1472,12 @@ section {
   
   .skills-grid {
     grid-template-columns: 1fr;
+    gap: var(--space-24);
   }
   
   .projects-grid {
     grid-template-columns: 1fr;
+    gap: var(--space-24);
   }
   
   .contact-content {
@@ -1420,28 +1487,49 @@ section {
   
   .nav-container {
     padding: var(--space-12) var(--space-16);
+    margin: 0;
   }
   
   section {
     padding: 60px 0;
+    margin: 0;
+  }
+  
+  .container {
+    padding: 0 var(--space-16);
+    margin: 0 auto;
   }
 }
 
 @media (max-width: 480px) {
   .container {
     padding: 0 var(--space-12);
+    margin: 0 auto;
   }
   
   .glass-card {
     padding: var(--space-16);
+    margin: 0;
   }
   
   .projects-grid {
     grid-template-columns: 1fr;
+    gap: var(--space-20);
   }
   
   .project-card {
     min-width: unset;
+    margin: 0;
+  }
+  
+  .hero-content {
+    padding: 0 var(--space-16);
+    margin: 0;
+  }
+  
+  .section-header {
+    margin: 0 0 var(--space-32) 0;
+    padding: 0 var(--space-16);
   }
 }
 
